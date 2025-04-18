@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh1vclfawjdt8"]
+
+[ext_resource type="PackedScene" uid="uid://3agn2kuyo7bw" path="res://models/wall/brick-wall.glb" id="1_upfu7"]
+[ext_resource type="Material" uid="uid://hnidpunovnip" path="res://models/wall/wall_material_3d.tres" id="2_76uk2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nki41"]
+points = PackedVector3Array(0.5, 0.701914, -0.342923, 0.446554, 0.470645, -0.327013, 0.5, 0.0899379, -0.32, 0.5, 0.701914, -0.477095, -0.5, 0.701914, -0.342923, 0.305599, 0.470645, -0.327013, 0.5, 0, -0.32, -0.5, 0.0899379, -0.32, 0.5, 0.0899379, -0.5, -0.0802662, 0.518534, -0.493005, -0.5, 0.701914, -0.477095, -0.29444, 0.370676, -0.327013, 0.5, 0, -0.5, -0.5, 0, -0.32, -0.5, 0.0899379, -0.5, -0.221222, 0.518534, -0.493005, -0.5, 0, -0.5)
+
+[node name="brick-wall2" instance=ExtResource("1_upfu7")]
+
+[node name="brick-wall" parent="." index="0"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_76uk2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="brick-wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brick-wall/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_nki41")

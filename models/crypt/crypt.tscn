@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvhjap8e1vot3"]
+
+[ext_resource type="PackedScene" uid="uid://b64e4sxdh7s4g" path="res://models/crypt/crypt.glb" id="1_2knc2"]
+[ext_resource type="PackedScene" uid="uid://b1e2ea4lu5ra4" path="res://models/crypt/crypt-small-entrance-alternative.glb" id="2_r8hbe"]
+[ext_resource type="PackedScene" uid="uid://fhpfoxny1dkq" path="res://models/crypt/crypt-door.glb" id="3_hxka1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8hbe"]
+albedo_color = Color(0.313726, 0.317647, 0.270588, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2knc2"]
+points = PackedVector3Array(0.3752, 0.0335885, 0.526291, 0.282722, 0.39197, 0.464173, 0.335976, 0.0335885, 0.5656, 0.3752, 0, 0.526291, 0.3752, 0.0335885, -0.526402, -0.00051415, 0.531948, 0.464173, 0.282722, 0.39197, -0.464284, 0.335976, 0, 0.5656, -0.336049, 0.0335885, 0.5656, 0.3752, 0, -0.526402, 0.335976, 0.0335885, -0.5656, -0.282796, 0.39197, 0.464173, -0.00051415, 0.531948, -0.464284, -0.336049, 0, 0.5656, -0.3752, 0.0335885, 0.526291, 0.335976, 0, -0.5656, -0.336049, 0.0335885, -0.5656, -0.282796, 0.39197, -0.464284, -0.3752, 0, 0.526291, -0.3752, 0.0335885, -0.526402, -0.336049, 0, -0.5656, -0.3752, 0, -0.526402)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxka1"]
+albedo_color = Color(0.219608, 0.219608, 0.180392, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yokif"]
+albedo_color = Color(0.356863, 0.356863, 0.270588, 1)
+emission_enabled = true
+emission = Color(0, 0.880518, 0.17321, 1)
+
+[node name="crypt2" instance=ExtResource("1_2knc2")]
+
+[node name="crypt" parent="." index="0"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_r8hbe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="crypt" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crypt/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_2knc2")
+
+[node name="crypt-small-entrance-alternative2" parent="crypt" index="1" instance=ExtResource("2_r8hbe")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.0552741, 0.435992)
+
+[node name="crypt-small-entrance-alternative" parent="crypt/crypt-small-entrance-alternative2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hxka1")
+
+[node name="crypt-door2" parent="crypt/crypt-small-entrance-alternative2" index="1" instance=ExtResource("3_hxka1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19821, -0.0127543, 0)
+
+[node name="door" parent="crypt/crypt-small-entrance-alternative2/crypt-door2/crypt-door" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yokif")
+
+[editable path="crypt/crypt-small-entrance-alternative2"]
+[editable path="crypt/crypt-small-entrance-alternative2/crypt-door2"]
